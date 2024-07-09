@@ -2,11 +2,19 @@
 """Mother model."""
 from datetime import datetime
 import uuid
-from models import storage
+import models
+from sqlalchemy import Column, String, DateTime
+from sqlalchemy.ext.declarative import  declarative_base
+
+Base = declarative_base()
 
 
 class Base_M():
     """Create and initialive basic methods and attributes of all models."""
+
+    id = Column(String(60), primary_key=True, nullable=False)
+    created_at = Column(DateTime, default=datetime.utcnow(), nullable=False)
+    updated_at = Column(DateTime, default=datetime.utcnow(), nullable=False)
 
     fomat = "%Y-%m-%dT%H:%M:%S:%f"
 
@@ -15,7 +23,6 @@ class Base_M():
 
         if kwargs:
             for key in kwargs.keys():
-                print("______*****_____")
                 if key != '__class__':
                     setattr(self, key, kwargs[key])
             #convert time attribute to correct type
@@ -48,6 +55,10 @@ class Base_M():
         """save and instance to a storgae system."""
 
         self.updated_at = datetime.utcnow()
-        storage.new(self)
-        storage.save()
-        
+        models.storage.new(self)
+        models.storage.save()
+
+    def delete(self):
+        """Remove the current instande from stroage."""
+
+        storage.delete(self)

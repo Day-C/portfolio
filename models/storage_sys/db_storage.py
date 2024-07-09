@@ -1,52 +1,53 @@
 #!/usr/bin/python3
 """Database storage"""
 
+import models
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 from models.base_model import Base
+from os import getenv
 
-
-models = {}
+classes = {}
 
 class DbStorage():
     """Handle storage fo objecst into a mysql database."""
 
-    __engine = ""
-    __session = ""
+    __engine = None
+    __session = None
 
     def __init__(self):
         """collect DB connection parameters from 
         env-variable and connect to a database.
         """
 
-        urs = PHPLS_USER
-        pwd = PHPLS_PWD
-        hst = "localhost"
-        dbs = PHPLS_DB
+        usr = 'pharmap_dev'
+        pwd = 'pharmapwd'
+        hst = 'localhost'
+        dbs = 'pharmap_db'
 
         db_url = f"mysql+mysqldb://{usr}:{pwd}@{hst}/{dbs}"
 
-        self.__engine = create_engine(db_url, pool_per_oing=True)
+        self.__engine = create_engine(db_url)
 
     def all(self, cls=None):
         """gets all objects fron the database."""
 
         all_objs = {}
-        if cls != None and cls in models:
-            all_objs = self.session.query(models[cls]).all()
+        if cls != None and cls in classes:
+            all_objs = self.session.query(classes[cls]).all()
         else:
-            for key in models.keys():
-                all_objs = self.__session.query(models[key]).all()
+            for key in classes.keys():
+                all_objs = self.__session.query(classes[key]).all()
         return all_objs
 
     def new(self, obj):
         """Add an onject to the curent session."""
-
+        print("adding to session")
         self.__session.add(obj)
 
     def save(self):
         """commit changes made on current session to database."""
-
+        print("commiting session")
         self.__session.commit()
 
     def delete(self, obj=None):
@@ -61,7 +62,7 @@ class DbStorage():
         #create all table
         Base.metadata.create_all(self.__engine)
         #creates a session
-        session_factory = sessionmaker(bind=self.__engine, expire_on_commit=False_)
+        session_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(session_factory)
         self.__session = Session
 
