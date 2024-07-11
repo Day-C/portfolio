@@ -1,13 +1,27 @@
-<!DOCTYPE html>
-<HTML lang="en">
-	<HEAD>
-		<META charset="utf-8">
-		<TITLE>PharmaPlus</TITLE>
-	</HEAD>
-	<BODY>
-		<HEADER>
-			<DIV>welcome to Pharmaplus</DIV>
-		</HEADER>
+{% extends 'main.html' %}
 
-	</BODY>
-</HTML>
+{% block title %}Home{% endblock %}
+
+{% block content %}
+	<!--conntent-->
+	<SECTION id=home>
+		<DIV class="search_bar">
+			<FORM action="/submit", method="post">
+				<INPUT type="search" placeholder="search":>
+				<BUTTON type="submit">Search</BUTTON>
+			</FORM>
+		</DIV>
+		<DIV class="headline">
+			<P class="head_line">Find Detailed Drug Info and Buy Medications Online!</P>
+			<P class="sub_headline">Trustworthy Drug Data and Seamless Medication shopping at your convenience.</P>
+		</DIV>
+		<Div class="action">
+			<IMG src="{{ url_for('static', filename='img/pexels-laura-jane0.jpg') }}">
+			<UL class="actions">
+				<lI class="act1"><a href="#finder">search Brugs</a></LI>
+				<lI class="act2"><a href="phramacy">Pharmacy</a></LI>
+			</UL>
+		</DIV>
+	</SECTION>
+{% endblock %}
+

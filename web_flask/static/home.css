@@ -1,0 +1,48 @@
+html {
+	background-color: aliceblue;
+}
+#home {
+	padding-top: 150px;
+}
+.search_bar {
+	align: center;
+}
+
+.head_line {
+	display: flex;
+	font-size: 80px;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+}
+
+.sub_headline {
+	font-size: 40px;
+	align-items: center;
+}
+
+
+
+.actions {
+	display: flex;
+	position: absolute;
+	align-items: center;
+	padding-bottom: 10px;
+	margin-bottom: 50px;
+}
+.action li {
+	padding: 50px;
+}
+.actions li a  {
+	text-decoration: None;
+	color: white;
+	background-color: rebeccapurple;
+	font-size: 50px;
+	left: 20%;
+	top: 20%;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}

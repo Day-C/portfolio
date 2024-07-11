@@ -1,0 +1,70 @@
+
+header {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	background-color: deepskyblue;
+	height: 50px;
+	border-bottom: 5px solid #CCC;
+	padding-bottom: 10px;
+}
+
+nav ul {
+	position: absolute;
+	list-style-type: None;
+	padding-top: 2px;
+	top: 10%;
+	right: 1%;
+}
+
+nav ul li {
+	display: inline;
+	padding-right: 10px;
+	margin-left: 10px;
+	color: white;
+	font-size: 1.5em;
+	background-color: rebeccapurple;
+	border-radius: 50%;
+	height: 300px;
+	width: 200px;
+	
+}
+
+nav ul li a {
+	text-decoration: None;
+	height: 300px;
+	width: 200px;
+	color: white;
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background-color: deepPink;
+	height: 40px;
+	border-top: 5px solid #CCCCCC;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 10px;
+}
+.status {
+	position: relative;
+	top: 10%;
+	left: 90%;
+	width: 50px;
+	font-size: 30px;
+	border-radius: 50px;
+	background-color: white;
+}
+
+.cart{
+	position: absolute;
+	bottom: 10%;
+	left: 90%;
+	width: 50px;
+	font-size: 30px;
+	border-radius: 130px;
+	background-color: rebeccapurple;
+}

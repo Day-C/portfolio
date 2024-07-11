@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<HTML lang="en">
+	<HEAD>
+		<META charset="utf-8">
+		<TITLE>{% block title %}PharmaPlus{% endblock %}</TITLE>
+		<LINK rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+		<LINK rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+		<LINK rel="stylesheet" href="{{ url_for('static', filename='finder.css') }}">
+	</HEAD>
+	<BODY>
+		<HEADER>
+			<DIV class="Logo">
+				PharmaPlus
+				<DIV class="status">
+					{% block status %}G{% endblock %}
+				</DIV>
+			</DIV>
+		</HEADER>
+		<NAV>
+			<UL>
+				<LI><a href="#home">Home</a></LI>
+				<LI><a href="#finder">finder</a></LI>
+				<LI><a href="#pharmacy">pharmacy</a></LI>
+			</UL>
+		</NAV>
+		<!--<FORM action="/submit", method="post">
+			<INPUT type="search" placeholder="search":> 
+			<BUTTON type="submit">Search</BUTTON>
+		</FORM><-->
+		{% block content %}{% endblock %}
+		<FOOTER>
+			<P>&copy; 2024 pharmaPlus</P>
+			<DIV class="cart">{% block cart %}{% endblock %}</DIV>
+		</FOOTER>
+	</BODY>
+</HTML>
